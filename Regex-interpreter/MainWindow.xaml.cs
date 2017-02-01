@@ -55,7 +55,7 @@ namespace Regex_interpreter
 
         private void Github_Click(object sender, RoutedEventArgs e)
         {
-            Process.Start("https://github.com/Shadyzpop/Regex_interpreter");
+            Process.Start("https://github.com/Shadyzpop/Regex-interpreter");
         }
         #endregion
 
