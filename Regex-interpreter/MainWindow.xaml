@@ -1,0 +1,91 @@
+﻿<Controls:MetroWindow x:Class="Regex_interpreter.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:local="clr-namespace:Regex_interpreter"
+        mc:Ignorable="d"
+        Icon="/Resources/Icon.ico"
+        BorderThickness="0.5" 
+        GlowBrush="{DynamicResource AccentColorBrush}"
+        WindowStartupLocation="CenterScreen"
+        Title="Regex-Interpreter" Height="436" Width="640">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resources/Icons.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid>
+        <TextBox Controls:TextBoxHelper.ClearTextButton="True"
+                 Controls:TextBoxHelper.Watermark="@Regex" 
+                 x:Name="RegexBox"
+                 Margin="10,6,10,374" Text="\d+" KeyUp="RegexBox_KeyUp" TextChanged="RegexBox_TextChanged" />
+        <RichTextBox Margin="10,48,10,10"
+                     ScrollViewer.CanContentScroll="True"
+                     ScrollViewer.VerticalScrollBarVisibility="Auto"
+                     x:Name="RichBox"
+                     >
+            <FlowDocument>
+                <Paragraph>
+                    <Run Text="Edit the Expression &amp; Text to see matches. Roll over matches or the expression for details. Undo mistakes with ctrl-z. Save Favorites &amp; Share expressions with friends or the Community. Explore your results with Tools. A full Reference &amp; Help is available in the Library, or watch the video Tutorial."/>
+                </Paragraph>
+                <Paragraph>
+                    <Run/>
+                </Paragraph>
+                <Paragraph>
+                    <Run Text="Sample text for testing:"/>
+                </Paragraph>
+                <Paragraph>
+                    <Run Text="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"/>
+                </Paragraph>
+                <Paragraph>
+                    <Run Text="0123456789 _+-.,!@#$%^&amp;*();\/|&lt;&gt;&quot;'"/>
+                </Paragraph>
+                <Paragraph>
+                    <Run Text="12345 -98.7 3.141 .6180 9,000 +42"/>
+                </Paragraph>
+                <Paragraph>
+                    <Run Text="192.168.100.100:100  19.168.100.100"/>
+                </Paragraph>
+                <Paragraph>
+                    <Run Text="555.123.4567&#x9;+1-(800)-555-2468"/>
+                </Paragraph>
+                <Paragraph>
+                    <Run Text="foo@demo.net&#x9;bar.ba@test.co.uk"/>
+                </Paragraph>
+                <Paragraph>
+                    <Run Text="www.demo.com&#x9;http://foo.co.uk/"/>
+                </Paragraph>
+            </FlowDocument>
+            <RichTextBox.Resources>
+                <Style TargetType="{x:Type Paragraph}">
+                    <Setter Property="Margin" Value="0"/>
+                </Style>
+            </RichTextBox.Resources>
+
+        </RichTextBox>
+    </Grid>
+
+    <Controls:MetroWindow.RightWindowCommands>
+        <Controls:WindowCommands>
+            <Button Click="Github_Click">
+                <StackPanel Orientation="Horizontal">
+                    <Rectangle Width="20"
+                   Height="20"
+                   Fill="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}">
+                        <Rectangle.OpacityMask>
+                            <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_github}" />
+                        </Rectangle.OpacityMask>
+                    </Rectangle>
+                    <TextBlock Margin="4 0 0 0"
+                   VerticalAlignment="Center"
+                   Text="Github" />
+                </StackPanel>
+            </Button>
+        </Controls:WindowCommands>
+    </Controls:MetroWindow.RightWindowCommands>
+</Controls:MetroWindow>
